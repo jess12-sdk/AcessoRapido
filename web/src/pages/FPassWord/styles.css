@@ -1,0 +1,149 @@
+#page-fpassword {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: initial;
+    align-items: center;
+    background: var(--color-background);
+}
+
+.container-fpassword {
+    width: 100%;
+    height: 100%;
+    padding-top: 1.5;
+    padding-left: 3.5rem;
+    padding-right: 3.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.container-fpassword fieldset {
+    border: 0;
+}
+
+.container-fpassword fieldset legend {
+    color: var(--color-primary);
+    align-items: initial;
+    padding-left: 2.5rem;
+    font: 700 5rem Poppins;
+}
+
+.container-fpassword fieldset h2 {
+    padding-top: 0.8rem;
+    padding-left: 2.5rem;
+    color: var(--color-text-secondary);
+    align-items: initial;
+    font: 700 1.6rem Poppins;
+}
+.content-input-fpassword{
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+}
+
+.button-container-fpassword {
+    margin-top: 3.5rem;
+    padding-left: 5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-container-fpassword a{
+    width: 30rem;
+    height: 6.5rem;
+    border-radius: 8rem;
+    font: 700 2.0rem Archivo;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--color-button-text);
+    transition: background-color 0.5s;
+}
+
+.button-container-fpassword a.begin {
+    background: var(--color-button-primary);
+}
+
+.button-container-fpassword a.begin:hover {
+    background: var(--color-primary-light);
+}
+
+@media (min-width: 950px) {
+    #page-fpassword-content {
+        width: 50%;
+        height: 100vh;
+
+        display: flex;
+        flex-direction: column;   
+        padding-top: 0.8rem;
+        padding-bottom: 13rem;
+        background: var(--color-background);
+
+    }
+
+    .head2 {
+        margin: 0;
+        padding-left: 2.5rem;
+        padding-top: 2.5rem;
+        width: 45rem;
+        height: 5rem;
+    }
+
+    .head2 img{
+        width: 5rem;
+        height: 3rem;
+    }
+
+
+
+    .container-fpassword {
+        background: var(--color-background);
+        width: 50%;
+        height: 100%;
+    }
+
+    .container-fpassword fieldset legend {
+        padding-top: 8rem;
+        color: var(--color-primary);
+        align-items: initial;
+        font: 700 4.5rem Poppins;
+    }
+
+    .container-fpassword fieldset h2 {
+        padding-top: 0.8rem;
+        padding-bottom: 4rem;
+        color: var(--color-text-secondary);
+        align-items: initial;
+        font: 700 1.6rem Poppins;
+    }
+
+    .button-container-fpassword a {
+        width: 30rem;
+        height: 5rem;
+        border-radius: 8rem;
+        font: 700 1.6rem Archivo;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: var(--color-button-text);
+        transition: background-color 0.5s;
+    }
+    
+    .button-container-fpassword {
+        margin-top: 5rem;
+        padding-right: 15rem;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .button-container-fpassword a.begin {
+        background: var(--color-button-primary);
+    }
+    
+    .button-container-fpassword a.begin:hover {
+        background: var(--color-primary-light);
+    }
+
+}
