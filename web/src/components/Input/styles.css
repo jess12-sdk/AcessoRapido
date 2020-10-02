@@ -4,6 +4,7 @@
 
 .input-block label {
     font-size: 2rem;
+    color: var(--color-text-sec)
 }
 
 .input-block input {

@@ -19,7 +19,7 @@ function Register(){
     const [name, setName] = useState('');
     const [lastname, setLastname] = useState('');
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [passwordM, setPassword] = useState('');
 
     function handleCreateUsers(e: FormEvent){
         e.preventDefault();
@@ -28,11 +28,11 @@ function Register(){
             name,
             lastname,
             email,
-            password
+            passwordM
         }).then(() => {
             alert('Cadastro realizado com sucesso!');
 
-            
+            history.push('/registerok');
         }).catch(() => {
             alert('Erro no cadastro!');
         })
@@ -77,20 +77,18 @@ function Register(){
                                         onChange={(e) => { setEmail(e.target.value) }}
                                     />
 
-                                    <Input
+                                    <input
+                                        type="password"
                                         name="password"
-                                        label=""
                                         placeholder="Senha"
-                                        value={password}
+                                        value={passwordM}
                                         onChange={(e) => { setPassword(e.target.value) }}
                                     />
                                 </div>
 
                                 <div className="button-container-register">
                                     <button type="submit">
-                                        <Link to="/registerok" className="begin">
                                             Cadastrar
-                                        </Link>
                                     </button>
                                 </div>
 

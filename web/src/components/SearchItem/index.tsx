@@ -19,7 +19,6 @@ const SearchItem: React.FC<SearchItemProps> = ({item}) => {
 
     return(
         <article className="search-item">
-            <div className="main-content">
                 <Link to="/profile">
                     <header>
                         <img src={item.avatar} alt={item.category} />
@@ -30,7 +29,6 @@ const SearchItem: React.FC<SearchItemProps> = ({item}) => {
 
                     <h3>{item.neighborhood}<br/>{item.city}</h3>
                 </Link>
-            </div>
         </article>
     );
 }
