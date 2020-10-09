@@ -1,27 +1,42 @@
-import React, { Component } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { Text, View, StyleSheet } from 'react-native';
+import { RectButton } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 
 
-export default class Success extends Component {
-render(){
+function Success(){
+
+  const {navigate} = useNavigation();
+
+  function handleNavigateToHomePage() {
+    navigate('Home');
+  }
+
   return (
     <View style = {styles.container}>
         <Text style = {styles.title}>
           Sucesso!!!
         </Text>
+
         <Text style = {styles.paragraph}>
           Seus dados foram cadastrados com sucesso.
         </Text>
+
         <Text style = {styles.text}>
-        Boa, agora aproveite a plataforma confira nossos serviços.
+          Boa, agora aproveite a plataforma confira nossos serviços.
         </Text>
-      <TouchableOpacity style = {styles.button}>
-          <Text style = {styles.buttonText}>Vamos lá</Text>
-      </TouchableOpacity>
+
+        <RectButton
+        onPress={handleNavigateToHomePage}
+          style = {styles.button}
+        >
+            <Text style = {styles.buttonText}>Vamos lá</Text>
+        </RectButton>
     </View>
     );
-  }
 }
+
+export default Success;
 
 const styles = StyleSheet.create({
   container: {
@@ -36,7 +51,6 @@ const styles = StyleSheet.create({
   title: {
     width: 255,
     marginTop: 150,
-    fontFamily: 'Ubuntu',
     fontSize: 40,
     fontWeight: 'bold',
     textAlign: 'center',
@@ -46,7 +60,6 @@ const styles = StyleSheet.create({
   paragraph: {
     width: 255,
     marginTop: 10,
-    fontFamily: 'Ubuntu',
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
@@ -56,7 +69,6 @@ const styles = StyleSheet.create({
    text: {
     width: 255,
     marginTop: 130,
-    fontFamily: 'Ubuntu',
     fontSize: 20,
     textAlign: 'center',
     lineHeight: 23,
@@ -78,7 +90,6 @@ const styles = StyleSheet.create({
     width: 60,
     height: 13,
     marginLeft: 140,
-    fontFamily: 'Ubuntu',
     fontWeight: 'bold',
     fontSize: 12,
     lineHeight: 14,

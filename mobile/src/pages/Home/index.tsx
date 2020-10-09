@@ -1,25 +1,45 @@
-import React, { Component } from 'react';
-import { Image, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { Image, Text, View, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { RectButton } from 'react-native-gesture-handler';
   
-export default class Home extends Component {
+function Home(){
 
-render(){
-    return (
-    <View style = {styles.container}>
-      <View style = {styles.containerHender}>
-        <Image  style = {styles.logo} source = {require('../../assets/images/logo.png')} />
-        <Image  style = {styles.image} source = {require('../../assets/images/services.png')} />
-      </View>
-      <TouchableOpacity style = {styles.button}>
-          <Text style = {styles.buttonText}>Buscar Serviços</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style = {styles.buttonService}>
-          <Text style = {styles.buttonText}>Ofertar Serviços</Text>
-      </TouchableOpacity>
-    </View>
-    );
+  const {navigate} = useNavigation();
+
+  function handleNavigateToGiveServicesPage() {
+    navigate('Give');
   }
-} 
+
+  function handleNavigateToSearchPages() {
+    navigate('Search');
+  }
+
+    return (
+      <View style = {styles.container}>
+        <View style = {styles.containerHender}>
+          <Image  style = {styles.logo} source = {require('../../assets/images/logo.png')} />
+          <Image  style = {styles.image} source = {require('../../assets/images/services.png')} />
+        </View>
+
+        <RectButton
+          onPress={handleNavigateToSearchPages} 
+          style={styles.button}
+        >
+          <Text style = {styles.buttonText}>Buscar Serviços</Text>
+        </RectButton>
+
+        <RectButton
+          onPress={handleNavigateToGiveServicesPage}
+          style = {styles.buttonService}
+        >
+          <Text style = {styles.buttonText}>Ofertar Serviços</Text>
+        </RectButton>
+      </View>
+    );
+}
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -80,7 +100,6 @@ const styles = StyleSheet.create({
     width: 90,
     height: 13,
     marginLeft: 140,
-    fontFamily: 'Ubuntu',
     fontWeight: 'bold',
     fontSize: 12,
     lineHeight: 14,
@@ -90,3 +109,5 @@ const styles = StyleSheet.create({
 
   
 });
+
+export default Home;

@@ -148,7 +148,7 @@ function Give(){
                                         { value: 'Elétrica', label: 'Elétrica' },
                                         { value: 'Fretes', label: 'Fretes' },
                                         { value: 'Obras Gerais', label: 'Obras Gerais' },
-                                        { value: 'Pedreiro', label: 'Pedreiro' }
+                                        { value: 'pedreiro', label: 'pedreiro' }
                                     ]}
                                 />
 

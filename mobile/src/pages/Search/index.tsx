@@ -1,46 +1,91 @@
-import React, {Component} from 'react'
-import { Text, View, StyleSheet, TextInput, TouchableOpacity,Image } from 'react-native'
+import React, { useState } from 'react';
+import { Text, View, StyleSheet, TextInput, TouchableOpacity,Image } from 'react-native';
+import { RectButton } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 
-export default class Search extends Component{
-  render(){
+import api from '../../services/api';
+
+function Search(){
+
+  const {goBack} = useNavigation();
+  const {navigate} = useNavigation();
+
+  const [item, setItem] = useState([]);
+
+  const [category, setCategory] = useState('');
+  const [uf, setUf] = useState('');
+  const [city, setCity] = useState('');
+
+  function handleNavigateToProfilePage() {
+    navigate('Profile');
+  }
+
+  function handleNavigateBack() {
+    goBack();
+  }
+
+  async function handleFiltersSubmit(){
+
+    const response = await api.get('search', {
+        params: {
+            category,
+            uf,
+            city,
+        }
+    });
+
+    setItem(response.data);
+}
+  
     return(
       //Tela
       <View style={styles.container}>
         <View style={styles.cabecalho}>
-          <TouchableOpacity style={styles.voltar}>
-            <Image 
-              source={require('../../assets/images/back.png')}
-              style={styles.img1}/>
-          </TouchableOpacity>
+          <RectButton 
+            onPress={handleNavigateBack}
+            style={styles.voltar}>
+              <Image style = {styles.voltarImage} source = {require('../../assets/images/back.png')} />
+          </RectButton>
         </View>
       
         <View style={styles.corpo}>
           <Text style={styles.text}>Estes são os profissionais disponíveis</Text>
+
           <Text style={styles.text1}>Categoria</Text>
           <TextInput 
-            style = {styles.input1} 
-            placeholder="Digite sua categoria"/>
+            style = {styles.input1}
+            value={category}
+            onChangeText={text => setCategory(text)}
+            placeholder="Digite sua categoria"
+          />
             
           <Text style={styles.text2}>Estado</Text>
           <TextInput 
-            style = {styles.input2} 
-            placeholder="Qual estado?"/>
+            style = {styles.input2}
+            value={uf}
+            onChangeText={text => setUf(text)}
+            placeholder="Qual estado?"
+          />
     
-
           <Text style={styles.text3}>Cidade</Text>
           <TextInput 
             style = {styles.input3} 
-            placeholder="Qual cidade?"/>
+            value={city}
+            onChangeText={text => setCity(text)}
+            placeholder="Qual cidade?"
+          />
 
         </View>
         <View style={styles.rodape}>
-          <TouchableOpacity>
+          <RectButton
+            onPress={handleNavigateToProfilePage}
+          >
             <Text style={styles.botao }>buscar</Text>
-          </TouchableOpacity>
+          </RectButton>
         </View>
       </View>
     )
-  }
+  
 }
 
 const styles = StyleSheet.create({
@@ -64,16 +109,14 @@ const styles = StyleSheet.create({
 
   voltar:{
     marginLeft: 17.6,
-    marginTop: 15,
-    width: 35,
-    height: 15
+    marginTop: 33,
+    width: 70,
+    height: 20
   },
 
-   img1:{
-    marginLeft:0,
-    marginTop:13,
-    width:30,
-    height:20,
+  voltarImage: {
+    width: 35,
+    height: 10
   },
 
   text:{
@@ -81,7 +124,6 @@ const styles = StyleSheet.create({
     height: 56,
     marginLeft: 29,
     marginTop: 23,
-    fontFamily: 'Ubuntu', 
     fontStyle: 'normal',
     fontWeight: 'bold',
     fontSize: 24,
@@ -104,7 +146,6 @@ const styles = StyleSheet.create({
     height: 22.71,
     marginLeft: 31,
     marginTop: 108,
-    fontFamily: 'Poppins',
     fontStyle: 'normal',
     fontWeight: 'normal',
     fontSize: 16,
@@ -118,7 +159,6 @@ const styles = StyleSheet.create({
     height: 22.71,
     marginLeft: 31,
     marginTop: 212,
-    fontFamily: 'Poppins',
     fontStyle: 'normal',
     fontWeight: 'normal',
     fontSize: 16,
@@ -132,7 +172,6 @@ const styles = StyleSheet.create({
     height: 22.71,
     marginLeft: 172,
     marginTop: 212,
-    fontFamily: 'Poppins',
     fontStyle: 'normal',
     fontWeight: 'normal',
     fontSize: 16,
@@ -233,3 +272,5 @@ const styles = StyleSheet.create({
   }
 
 });
+
+export default Search;
